@@ -8,14 +8,20 @@ class TaskPage extends StatelessWidget {
         flex: 5,
         child: Column(
           children: [
+            AppBar(
+              title: Text(
+                "Task Manager",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.black87),
+              ),
+              backgroundColor: Colors.white,
+            ),
             PhysicalModel(
               color: Colors.black54,
               elevation: 5,
-              borderRadius: BorderRadius.circular(10.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.0),
                 ),
                 padding: const EdgeInsets.symmetric(
                     horizontal: 80.0, vertical: 20.0),

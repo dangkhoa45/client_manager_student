@@ -1,6 +1,7 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_client_manager_student/pages/calendarpage.dart';
+import 'package:flutter_client_manager_student/pages/studentListPage.dart';
 import 'package:flutter_client_manager_student/pages/taskpage.dart';
 
 class MyDesktopApp extends StatelessWidget {
@@ -118,12 +119,7 @@ class MyDesktopApp extends StatelessWidget {
                 ),
                 Container(
                   color: Colors.white,
-                  child: const Center(
-                    child: Text(
-                      'Files',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
+                  child: StudentListPage(),
                 ),
                 Container(
                   color: Colors.white,

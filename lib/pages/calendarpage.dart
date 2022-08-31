@@ -36,6 +36,14 @@ class _CalendarState extends State<CalendarPage> {
     return Scaffold(
       body: Column(
         children: [
+          AppBar(
+            title: Text(
+              "Calendar",
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
+            ),
+            backgroundColor: Colors.white,
+          ),
           TableCalendar(
             focusedDay: selectedDay,
             firstDay: DateTime(1990),
