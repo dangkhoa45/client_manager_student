@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+List<String> items = <String>[
+  'Team 1',
+  'Team 2',
+  'Team 3',
+  'Team 4',
+  'Team 5',
+];
+
 class StudentListPage extends StatefulWidget {
   const StudentListPage({Key? key}) : super(key: key);
 
@@ -9,14 +17,8 @@ class StudentListPage extends StatefulWidget {
 
 class _StudentListPageState extends State<StudentListPage> {
   int _value = 1;
-  List<String> items = <String>[
-    'Team 1',
-    'Team 2',
-    'Team 3',
-    'Team 4',
-    'Team 5',
-  ];
-  String dropdownValue = "team 1";
+
+  String dropdownValue = items.first;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class _StudentListPageState extends State<StudentListPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: 200,
+                      width: 250,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -67,7 +69,7 @@ class _StudentListPageState extends State<StudentListPage> {
                       ),
                     ),
                     SizedBox(
-                      width: 200,
+                      width: 250,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -139,11 +141,59 @@ class _StudentListPageState extends State<StudentListPage> {
                     ),
                   ],
                 ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 900,
+                      child: DropdownButtonItems(),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class DropdownButtonItems extends StatefulWidget {
+  const DropdownButtonItems({super.key});
+
+  @override
+  State<DropdownButtonItems> createState() => _DropdownButtonItemsState();
+}
+
+class _DropdownButtonItemsState extends State<DropdownButtonItems> {
+  String dropdownValue = items.first;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownValue,
+      alignment: Alignment.centerRight,
+      icon: const Icon(
+        Icons.arrow_drop_down,
+      ),
+      elevation: 16,
+      style: const TextStyle(color: Colors.deepPurple),
+      underline: Container(
+        height: 2,
+        color: Colors.deepPurpleAccent,
+      ),
+      onChanged: (String? value) {
+        // This is called when the user selects an item.
+        setState(() {
+          dropdownValue = value!;
+        });
+      },
+      items: items.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
     );
   }
 }

@@ -1,8 +1,11 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_client_manager_student/pages/assignTeams.dart';
 import 'package:flutter_client_manager_student/pages/calendarpage.dart';
 import 'package:flutter_client_manager_student/pages/studentListPage.dart';
 import 'package:flutter_client_manager_student/pages/taskpage.dart';
+
+import '../addStudent.dart';
 
 class MyDesktopApp extends StatelessWidget {
   PageController page = PageController();
@@ -118,26 +121,13 @@ class MyDesktopApp extends StatelessWidget {
                   child: TaskPage(),
                 ),
                 Container(
-                  color: Colors.white,
                   child: StudentListPage(),
                 ),
                 Container(
-                  color: Colors.white,
-                  child: const Center(
-                    child: Text(
-                      'Download',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
+                  child: addStudent(),
                 ),
                 Container(
-                  color: Colors.white,
-                  child: const Center(
-                    child: Text(
-                      'Settings',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
+                  child: assginTeams(),
                 ),
               ],
             ),
