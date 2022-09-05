@@ -75,7 +75,7 @@ class _CalendarState extends State<CalendarPage> {
             calendarStyle: CalendarStyle(
               isTodayHighlighted: true,
               selectedDecoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 124, 134, 141),
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(5.0),
               ),
@@ -99,7 +99,7 @@ class _CalendarState extends State<CalendarPage> {
               titleCentered: true,
               formatButtonShowsNext: false,
               formatButtonDecoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 146, 164, 177),
                 borderRadius: BorderRadius.circular(5.0),
               ),
               formatButtonTextStyle: TextStyle(

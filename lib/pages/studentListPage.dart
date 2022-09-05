@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../api/ApiService.dart';
+
 List<String> items = <String>[
   'Team 1',
   'Team 2',
@@ -20,8 +22,33 @@ class _StudentListPageState extends State<StudentListPage> {
 
   String dropdownValue = items.first;
 
+  var api = ApiService();
+
+  var listStudent = [];
+
+  //Get Student
+  void getStudent() async {
+    listStudent = await api.getAllStudent();
+    setState(() {});
+  }
+
+  Widget tableCellContainer(String text,
+      {FontWeight fontWeight = FontWeight.normal}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 40,
+        child: Text(
+          text,
+          style: TextStyle(fontWeight: fontWeight),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (mounted) getStudent();
     return Scaffold(
       body: Column(
         children: [
@@ -142,15 +169,48 @@ class _StudentListPageState extends State<StudentListPage> {
                   ],
                 ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: 900,
+                      width: 800,
                       child: DropdownButtonItems(),
                     ),
                   ],
                 ),
               ],
             ),
+          ),
+          Table(
+            border: TableBorder.all(),
+            columnWidths: const {
+              0: FixedColumnWidth(40),
+              1: FlexColumnWidth(),
+              2: FlexColumnWidth(),
+              3: FixedColumnWidth(64),
+              4: FixedColumnWidth(64)
+            },
+            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+            children: [
+              TableRow(
+                  decoration: const BoxDecoration(color: Colors.grey),
+                  children: [
+                    tableCellContainer('No', fontWeight: FontWeight.bold),
+                    tableCellContainer('Name', fontWeight: FontWeight.bold),
+                    tableCellContainer('Email', fontWeight: FontWeight.bold),
+                    tableCellContainer('Teams', fontWeight: FontWeight.bold),
+                    tableCellContainer('Gender', fontWeight: FontWeight.bold)
+                  ]),
+              for (var i = 0; i < listStudent.length; i++)
+                TableRow(children: [
+                  tableCellContainer(listStudent[i]['id'].toString()),
+                  tableCellContainer(listStudent[i]['name'].toString()),
+                  tableCellContainer(listStudent[i]['email'].toString()),
+                  tableCellContainer(listStudent[i]['team'].toString()),
+                  tableCellContainer(
+                      listStudent[i]['gender'] == 'M' ? 'Male' : 'Female'),
+                ])
+            ],
           ),
         ],
       ),
@@ -177,10 +237,10 @@ class _DropdownButtonItemsState extends State<DropdownButtonItems> {
         Icons.arrow_drop_down,
       ),
       elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
+      style: const TextStyle(color: Colors.black),
       underline: Container(
         height: 2,
-        color: Colors.deepPurpleAccent,
+        color: Colors.grey.shade600,
       ),
       onChanged: (String? value) {
         // This is called when the user selects an item.

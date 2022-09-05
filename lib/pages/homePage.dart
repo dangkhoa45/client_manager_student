@@ -12,27 +12,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Color.fromARGB(255, 70, 100, 232),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              "Student Manager",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              "Dashbroad",
-              style: TextStyle(fontSize: 15.0),
-            ),
-          ],
-        ),
-        leading: Icon(Icons.menu),
-      ),
       body: ResponsiveLayout(
         moblieBody: MyMobileBody(),
         desktopApp: MyDesktopApp(),

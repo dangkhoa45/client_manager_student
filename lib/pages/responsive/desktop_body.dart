@@ -1,5 +1,6 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_client_manager_student/pages/aboutPage.dart';
 import 'package:flutter_client_manager_student/pages/assignTeams.dart';
 import 'package:flutter_client_manager_student/pages/calendarpage.dart';
 import 'package:flutter_client_manager_student/pages/studentListPage.dart';
@@ -12,6 +13,26 @@ class MyDesktopApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Color.fromARGB(255, 184, 186, 195),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              "Student Manager",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              "Dashbroad",
+              style: TextStyle(fontSize: 15.0),
+            ),
+          ],
+        ),
+      ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -35,14 +56,28 @@ class MyDesktopApp extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
-                    "Student Manager",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    color: Colors.grey,
+                    width: double.infinity,
+                    height: 100,
+                    padding: EdgeInsets.only(top: 20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Dang Khoa",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        Text(
+                          "dangkhoa@ivs0251.vitenet.net",
+                          style: TextStyle(
+                            color: Colors.grey[200],
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Text("Dashbroad"),
                   Divider(
                     height: 30.0,
                     thickness: 2.0,
@@ -101,7 +136,7 @@ class MyDesktopApp extends StatelessWidget {
               ),
               SideMenuItem(
                 priority: 6,
-                title: 'Logout',
+                title: 'Log out',
                 onTap: () {
                   page.jumpToPage(6);
                 },
@@ -124,10 +159,13 @@ class MyDesktopApp extends StatelessWidget {
                   child: StudentListPage(),
                 ),
                 Container(
-                  child: addStudent(),
+                  child: AddStudent(),
                 ),
                 Container(
-                  child: assginTeams(),
+                  child: AssginTeams(),
+                ),
+                Container(
+                  child: AboutPage(),
                 ),
               ],
             ),
